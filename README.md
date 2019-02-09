@@ -16,7 +16,7 @@ Information:
 - Author: Yiqiao Yin
 - Maintainer: Yiqiao Yin <eagle0504@gmail.com>
 - Description: This package advises a trading/investment decision given a stock ticker.
-- License: GPL-1
+- License: GPL-2 [What is GPL-2?](http://r-pkgs.had.co.nz/description.html#license)
 - imports: quantmod,stats,xts,TTR,knitr
 - Encoding: UTF-8
 - LazyData: true
