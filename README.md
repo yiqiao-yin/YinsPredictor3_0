@@ -60,6 +60,12 @@ Output is a list of objects:
 - *Statistics*: The third object is a table resulting from buy/sell signals. It is in tabular form and summarizes the statistics of buy/sell signals.
 - *Comment* and *Notes*: The four and fifth are comments and notes.
 
+## Soft Threshold
+
+Money Management is more of a art than science. The soft threshold here is how to change **c.buy** to adapt to different stocks at different market environment. Default value is |1.96| which indicating a theoretical 5% of pricing activities out there. However, this is not always the case. For example, the math that comes up with 5% value is dependent on t-distribution, which is dependent on central limit theorem which we need law of large numbers. For IPOs, it is intuitive that this would fail, because the tapes trades pure and all sorts of human interactions can come in to the market any time, causing consistent fall or rise in a way that this algorithm will not differentiate. This is simply because this algorithm needs data (usually the company should be at least 5 years old).
+
+If you strictly follow this algorithm and my thresholds, you should be able to pin point bottom 5% of the stocks for almost all companies that are in the market for at least 5 years. For younger companies, I do not see sophisticated algorithm to detect "bottom" or "top". 
+
 ## Example
 
 An example usage of this package can refer to the following.
