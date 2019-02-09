@@ -23,7 +23,7 @@ Information:
 
 The package originated from [YinsPredictor2_0](https://github.com/yiqiao-yin/YinsPredictor2_0). It is updated with a buy/sell signal table, statistics, and comments.
 - The theorem of how to construct these signals come from Yin's Research, click [here](https://yinscapital.com/research/).
-- The app with this function built in is [here](https://y-yin.shinyapps.io/CENTRAL-INTELLIGENCE-PLATFORM/)
+- The app with this function built in is [here](https://y-yin.shinyapps.io/CENTRAL-INTELLIGENCE-PLATFORM/).
 
 ## Getting Started
 
