@@ -1,4 +1,4 @@
-# # Project Title: YinsPredictor3_0
+# Project Title: YinsPredictor3_0
 
 This package is designed to assist money managers to build better understanding of action-based trading behaviors.
 
