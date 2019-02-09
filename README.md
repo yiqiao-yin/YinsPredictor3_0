@@ -85,7 +85,7 @@ Output is a list of objects:
 
 ## Built With
 
-* [Yiqiao Yin's Research](https://yinscapital.com/research/): We conduct resaerch at Yin's Capital and we develop packages for trading algorithms.
+* [Yiqiao Yin's Research](https://yinscapital.com/research/): We conduct research at Yin's Capital and we develop packages for trading algorithms.
 
 ## Contributing
 
