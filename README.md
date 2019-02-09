@@ -39,6 +39,23 @@ The installation of this package is simple. We recommend to use *devtools* to in
 devtools::install_github("yiqiao-yin/YinsPredictor2_0")
 ```
 
+### Usage
+
+Inputs are the following:
+- r_day_plot=.8: the algorithm downloads all data but reports beginning from the 80% percentile of observation;
+- end_day_plot=1: the algorithm downloads all data but reports ending at the 100% percentile of observation (i.e. all of the observations which implies ending at the most recent business day);
+- c.buy=-1.96: a value related to the critical value in t-distribution and default is set at -1.96, implying user is interested at the bottom 5% of the low prices (How low is low? This value is calculated relatively by looking at multiple different levels of moving averages and historical stock price. Theoretically, |1.96| indicating +/- 5%, but in practice one should check the statistics table in the output.);
+- c.sell=+1.96: a value related to the critical value in t-distribution and default is set at +1.96, implying user is interested at the top 5% of the high prices (How high is high? This value is calculated relatively by looking at multiple different levels of moving averages and historical stock price. Theoretically, |1.96| indicating +/- 5%, but in practice one should check the statistics table in the output.);
+- height=1: a default value to scale the buy/signals (it can be changed so that user can scale all signals to mean zero);
+- past.n.days=3: this parameter tells the algorithm how many past days of data to report (the algorithm always downloads all the historically available data from Yahoo Finance);
+- test.new.price=0: default is set to 0 so that algorithm will download data as it is (meaning that the last observation is the most recent trading day); there is no need to change this if user has time frame bigger than a day as the algorithm downloads live data every time it executes; however, if user observes interesting pricing behavior during trading hours, then we make it available to change this parameter to any value that is observed and the algorithm will treat that value as the most recent value to conduct computation.
+
+Output is a list of objects: 
+- The first object has a comment with a quantity calculated from backend of the package. This is a string of text.
+- The second object is a table resulting from a more complex comptutation from the packge. This is tabular form of buy/sell signals.
+- The third object is a table resulting from buy/sell signals. It is in tabular form and summarizes the statistics of buy/sell signals.
+- The four and fifth are comments and notes.
+
 ## Example
 
 An example usage of this package can refer to the following.
@@ -77,11 +94,44 @@ $Notes
 [1] "PS: We recommend action frequency (ActionFreq) to be less than 5% and do nothing if signal values are less than 1 SD above Mean."
 ```
 
-Output is a list of objects: 
-- The first object has a comment with a quantity calculated from backend of the package. This is a string of text.
-- The second object is a table resulting from a more complex comptutation from the packge. This is tabular form of buy/sell signals.
-- The third object is a table resulting from buy/sell signals. It is in tabular form and summarizes the statistics of buy/sell signals.
-- The four and fifth are comments and notes.
+With default values set to thresholds that are tailored to my experience and personality, one can observe that there are barely any activities happening. This is intuitive in the sense that mispricings do not happen very often. The sudden drop or jump that deserve our attention probably occur very few times a year.
+
+That being said, if user observes any unlikely pricing activities in the market, user could use the following:
+```
+# Let us set the input *test.new.price* to some arbitrarily low value.
+Sys.time(); YinsPredictoR::yins_predictor('NFLX', test.new.price = 100)
+
+# Output
+[1] "2019-02-09 13:01:13 EST"
+$TS.Result
+[1] "Tomorrow this stock goes up with probability: 0.93"
+
+$Buy.Sell.Signal.Table
+
+
+|           | ClosePriceofNFLX| BuySignal| SellSignal|
+|:----------|----------------:|---------:|----------:|
+|2019-02-06 |           352.19|    0.0000|          0|
+|2019-02-07 |           344.71|    0.0000|          0|
+|2019-02-08 |           347.57|    0.0000|          0|
+|2019-02-09 |           100.00|  434.0081|          0|
+
+$Statistics
+
+
+|                | ActionFreq|  Mean|    SD|
+|:---------------|----------:|-----:|-----:|
+|BuySignalStats  |       0.04|  6.91| 38.19|
+|SellSignalStats |       0.15| 21.90| 61.60|
+
+$Comment
+[1] "We recommend buy frequency to be less than 0.04 for the first entry. Moreover, the expectation of buy signals is 6.91 and the standard deviation is 38.19, respectively. Hence, we conclude: Enter this stock."
+
+$Notes
+[1] "PS: We recommend action frequency (ActionFreq) to be less than 5% and do nothing if signal values are less than 1 SD above Mean."
+```
+
+In this case, the algorithm will learn about this sudden and perhaps bizarre activity to make a new decision. This function is also designed for intra-day activities. For regular users, simply run the function every morning and it shall be sufficient, because the algorithm downloads live data every time it runs.
 
 ## Built With
 
