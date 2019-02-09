@@ -54,7 +54,7 @@ Inputs are the following:
 - *test.new.price=0*: default is set to 0 so that algorithm will download data as it is (meaning that the last observation is the most recent trading day); there is no need to change this if user has time frame bigger than a day as the algorithm downloads live data every time it executes; however, if user observes interesting pricing behavior during trading hours, then we make it available to change this parameter to any value that is observed and the algorithm will treat that value as the most recent value to conduct computation.
 
 Output is a list of objects: 
-- *TS.Result*: The first object has a comment with a quantity calculated from backend of the package. This is a string of text.
+- *TS.Result*: The first object has a comment with a quantity calculated from backend of the package. This is a string of text. The calculation does not take *test.new.price* into consideration, because *test.new.price* is mostly for intraday movement and for the scope of time-series analysis conducted in our algorithm the smallest unit of analysis is "day" (anything less than a day time-series will not consider).
 - *Buy.Sell.Signal.Table*: The second object is a table resulting from a more complex comptutation from the packge. This is tabular form of buy/sell signals.
 - *Statistics*: The third object is a table resulting from buy/sell signals. It is in tabular form and summarizes the statistics of buy/sell signals.
 - *Comment* and *Notes*: The four and fifth are comments and notes.
