@@ -1,6 +1,6 @@
 # # Project Title: YinsPredictor3_0
 
-This package has a predictive function developed and generate predictive results signaling tomorrow's stock price given a stock ticker.
+This package is designed to assist money managers to build better understanding of action-based trading behaviors.
 
 ## Information
 
