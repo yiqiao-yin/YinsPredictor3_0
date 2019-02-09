@@ -89,6 +89,7 @@ yins_predictor <- function(
   } else {
     intra.day.test <- matrix(c(0,0,0,test.new.price,0,0), nrow = 1)
     rownames(intra.day.test) <- as.character(Sys.Date())
+    colnames(intra.day.test) <- colnames(x)
     x = data.frame(rbind(x, intra.day.test))
   }
   Close<-x[,4] # Define Close as adjusted closing price
