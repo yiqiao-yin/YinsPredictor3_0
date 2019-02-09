@@ -21,8 +21,7 @@ Information:
 - Encoding: UTF-8
 - LazyData: true
 
-The package originate from source [SAURAV KAUSHIK, MARCH 22, 2017](https://www.analyticsvidhya.com/blog/2017/03/create-packages-r-cran-github/).
-It is updated with a buy/sell signal table. 
+The package originated from [YinsPredictor2_0](https://github.com/yiqiao-yin/YinsPredictor2_0). It is updated with a buy/sell signal table, statistics, and comments.
 - The theorem of how to construct these signals come from Yin's Research, click [here](https://yinscapital.com/research/).
 - The app with this function built in is [here](https://y-yin.shinyapps.io/CENTRAL-INTELLIGENCE-PLATFORM/)
 
