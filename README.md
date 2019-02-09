@@ -42,8 +42,8 @@ devtools::install_github("yiqiao-yin/YinsPredictor2_0")
 ### Usage
 
 Inputs are the following:
-- *r_day_plot=.8*: the algorithm downloads all data but reports beginning from the 80% percentile of observation;
-- *end_day_plot=1*: the algorithm downloads all data but reports ending at the 100% percentile of observation (i.e. all of the observations which implies ending at the most recent business day);
+- *starting.percentile=.8*: the algorithm downloads all data but reports beginning from the 80% percentile of observation;
+- *ending.percentile=1*: the algorithm downloads all data but reports ending at the 100% percentile of observation (i.e. all of the observations which implies ending at the most recent business day);
 - *c.buy=-1.96*: a value related to the critical value in t-distribution and default is set at -1.96, implying user is interested at the bottom 5% of the low prices (How low is low? This value is calculated relatively by looking at multiple different levels of moving averages and historical stock price. Theoretically, |1.96| indicating +/- 5%, but in practice one should check the statistics table in the output.);
 - *c.sell=+1.96*: a value related to the critical value in t-distribution and default is set at +1.96, implying user is interested at the top 5% of the high prices (How high is high? This value is calculated relatively by looking at multiple different levels of moving averages and historical stock price. Theoretically, |1.96| indicating +/- 5%, but in practice one should check the statistics table in the output.);
 - *height=1*: a default value to scale the buy/signals (it can be changed so that user can scale all signals to mean zero);
