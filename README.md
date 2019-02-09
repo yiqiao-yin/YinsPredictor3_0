@@ -2,7 +2,9 @@
 
 This package is designed to assist money managers to build better understanding of action-based trading behaviors.
 
-<img align="center" src="https://github.com/yiqiao-yin/YinsPredictor3_0/blob/master/2017-12-01-to-2018-12-01.gif">
+<p align="center">
+  ![image](https://github.com/yiqiao-yin/YinsPredictor3_0/blob/master/2017-12-01-to-2018-12-01.gif)
+</p>
 
 ## Information
 
