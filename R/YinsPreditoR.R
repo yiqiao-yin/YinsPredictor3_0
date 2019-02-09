@@ -11,8 +11,8 @@ yins_predictor <- function(
   # symbol = 'AAPL'
   symbol,
   # Buy Symbols
-  # r_day_plot=.8; end_day_plot=1; c.buy=-1.96; c.sell=+1.96; height=1; past.n.days=3; test.new.price=0
-  r_day_plot=.8, end_day_plot=1, c.buy=-1.96, c.sell=+1.96, height=1, past.n.days=3, test.new.price=0)
+  # starting.percentile=.8; ending.percentile=1; c.buy=-1.96; c.sell=+1.96; height=1; past.n.days=3; test.new.price=0
+  starting.percentile=.8, ending.percentile=1, c.buy=-1.96, c.sell=+1.96, height=1, past.n.days=3, test.new.price=0)
 {
 
   ## Parameter Check
