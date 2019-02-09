@@ -89,4 +89,4 @@ Output is a list of objects:
 
 ## Contributing
 
-Yiqiao Yin (myself) is the sole owner and manager for this package.
+Yiqiao Yin (myself) is the sole owner and manager for this package. The origin of author's inspiration of developing this package comes from his experience in statistical machine learning and stock market. For story, please click [here](https://github.com/yiqiao-yin/Statistical_Machine_Learning/blob/master/Story.md).
