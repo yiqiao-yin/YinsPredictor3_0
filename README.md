@@ -39,7 +39,7 @@ The installation of this package is simple. We recommend to use *devtools* to in
 
 ```
 # Install Packge using devtools
-devtools::install_github("yiqiao-yin/YinsPredictor2_0")
+devtools::install_github("yiqiao-yin/YinsPredictor3_0")
 ```
 
 ### Usage
