@@ -74,12 +74,12 @@ An example usage of this package can refer to the following.
 Sys.time(); YinsPredictoR::yins_predictor('NFLX')
 
 # Output
-[1] "2019-02-27 03:43:08 EST"
+[1] "2019-02-27 03:50:43 EST"
 $`TS.Result`
 [1] "Time-series Learning: Tomorrow this stock goes up with probability: 0.01"
 
 $inter.based.Learning
-[1] "Interaction-based Learning: Tomorrow this stock goes up with probability: 0.31"
+[1] "Interaction-based Learning: Tomorrow this stock goes up with probability: 0.29"
 
 $Buy.Sell.Signal.Table
 
@@ -111,12 +111,12 @@ That being said, if user observes any unlikely pricing activities in the market,
 Sys.time(); YinsPredictoR::yins_predictor('NFLX', test.new.price = 100)
 
 # Output
-[1] "2019-02-27 03:43:58 EST"
+[1] "2019-02-27 03:51:27 EST"
 $`TS.Result`
 [1] "Time-series Learning: Tomorrow this stock goes up with probability: 0.01"
 
 $inter.based.Learning
-[1] "Interaction-based Learning: Tomorrow this stock goes up with probability: 0.31"
+[1] "Interaction-based Learning: Tomorrow this stock goes up with probability: 0.29"
 
 $Buy.Sell.Signal.Table
 
