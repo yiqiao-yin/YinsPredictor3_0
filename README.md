@@ -65,9 +65,9 @@ Money Management is more of an art than science. The soft threshold here is how 
 
 If you strictly follow this algorithm and my thresholds, you should be able to pin point bottom 5% of the stocks for almost all companies that are in the market for at least 5 years. For younger companies, I do not see sophisticated algorithm to detect "bottom" or "top". 
 
-## Example
+## Example: Simple Results
 
-An example usage of this package can refer to the following.
+An example usage of this package can refer to the following. Suppose user just wants to see some quick results. Such research can be done pre-market and we can use the following code to accomplish this.
 
 ```
 # For example
@@ -75,9 +75,6 @@ Sys.time(); YinsPredictoR::yins_predictor('NFLX')
 
 # Output
 [1] "2019-02-27 03:50:43 EST"
-$`TS.Result`
-[1] "Time-series Learning: Tomorrow this stock goes up with probability: 0.01"
-
 $inter.based.Learning
 [1] "Interaction-based Learning: Tomorrow this stock goes up with probability: 0.29"
 
@@ -105,16 +102,16 @@ $Comment
 
 With default values set to thresholds that are tailored to my experience and personality, one can observe that there are barely any activities happening. This is intuitive in the sense that mispricings do not happen very often. The sudden drop or jump that deserve our attention probably occur very few times a year.
 
-That being said, if user observes any unlikely pricing activities in the market, user could use the following:
+## Example: Intra-day
+
+Suppose user observes any unlikely pricing activities in the market and it is of his/her interest to discover posterior results based on this new observation. It is recommended to use the following code to update a new price. The algorithm will update itself. 
+
 ```
 # Let us set the input *test.new.price* to some arbitrarily low value.
 Sys.time(); YinsPredictoR::yins_predictor('NFLX', test.new.price = 100)
 
 # Output
 [1] "2019-02-27 03:51:27 EST"
-$`TS.Result`
-[1] "Time-series Learning: Tomorrow this stock goes up with probability: 0.01"
-
 $inter.based.Learning
 [1] "Interaction-based Learning: Tomorrow this stock goes up with probability: 0.29"
 
