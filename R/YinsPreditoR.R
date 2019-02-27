@@ -82,6 +82,121 @@ yins_predictor <- function(
                                                'Day_of_month','Month_of_year','Year','Day_of_week')
                                              ],type = 'response'))
 
+  ## Interaction based learning
+  # Data
+  data_new <- data.frame(na.omit(data))
+  data_new <- data.frame(cbind(data_new$up_down, data_new[, c(1:32,34,35,37)]))
+  data_new$data_new.up_down <- as.numeric(as.character(data_new$data_new.up_down))
+  data_new$Day_of_week <- as.numeric(data_new$Day_of_week)
+
+  ## Starting from here:
+  # Begin function:
+  # Compute influence score, i.e., i-score:
+  iscore <- function(
+    x = t(train.x),
+    y = train.y,
+    K = K.means.K) {
+
+    # Define data frame:
+    x = data.frame(x)
+    y = data.frame(y)
+
+    # Define modified I-score:
+    # Standardize
+    x.stand <- scale(x)
+    k = K
+
+    # K-means
+    k.means.fit <- kmeans(x.stand, k)
+    all <- data.frame(cbind(y, x))
+    all$assigned.clusters <- k.means.fit$cluster
+
+    # Compute I-score
+    i.score.draft <- NULL
+    y_bar <- plyr::count(y)[2,2]/sum(plyr::count(y)[,2])
+    for (i in 1:length(unique(k.means.fit$cluster))) {
+      local.n <- length(all[all$assigned.clusters == i, 1])
+      i.score <- local.n^2*(mean(all[all$assigned.clusters == i, 1]) - y_bar)^2
+      i.score.draft <- c(i.score.draft, i.score)
+    }
+    i.score <- mean(i.score.draft)/nrow(all)
+    #i.score
+
+    # Return modified I-score:
+    round(i.score, 2)
+  } # End of function
+
+  # Run BDA using iscore()
+  # For each row, i.e., for each response variable,
+  # we want run BDA for them individually.
+  m <- ncol(data_new[,-1])
+  y <- data_new[,1]
+  train.x.copy <- data_new[,-1]; train.y <- y; K.means.K <- round(sqrt(ncol(data_new[,-1]))); num.initial.set <- 1
+  # Algorithm starts from here: we need to repeat 1000 times:
+  BDA.Algo <- function() {
+    # Pick Initial Set (state of art) and call it X (capital X):
+    initial.set <- data.frame(train.x.copy[,sample(ncol(train.x.copy),size=m,replace=FALSE)])
+    # head(initial.set)
+    # Records influence path:
+    i.score.path <- matrix(0,nrow=2,ncol=m)
+    i.score.path <- rbind(colnames(initial.set), i.score.path) #; i.score.path
+    # Compute i score for initial set:
+    i.score.col <- 1
+    # Create iscore path:
+    i.score.path[2,i.score.col] <- iscore(x=initial.set, y=train.y, K = 2); # i.score.path
+
+    while(i.score.col < m) {
+      # Each round: taking turns dropping one variable and computing I-score:
+      i <- 0
+      initial.set.copy <- initial.set
+      i.score.drop <- matrix(0,nrow=1,ncol=ncol(initial.set.copy))
+      while (i < ncol(initial.set.copy)){
+        i <- i + 1
+        initial.set <- data.frame(initial.set.copy[,-i]); # head(initial.set.copy); dim(initial.set)
+        i.score.drop[,i] <- iscore(x=initial.set, y=train.y); # i.score.drop;
+      }
+
+      # This round:
+      i.score.path[3,i.score.col] <- which(i.score.drop == max(i.score.drop))[[1]]
+      variable.dropped <- which(i.score.drop == max(i.score.drop))[[1]]
+      initial.set <- initial.set.copy[,-variable.dropped] # head(initial.set)
+      i.score.col <- i.score.col + 1
+
+      # Update I-score and ready for next round
+      i.score.path[2,i.score.col] <- iscore(x=initial.set, y=train.y); # i.score.path
+    }# End of loop
+
+    # Record fianl table:
+    i.score.path
+
+    # Upload data:
+    # Indexed a, b, c, ... for different trials.
+    final.i.score.path.mat <- i.score.path
+    final.i.score.path.mat <- data.frame(as.matrix(final.i.score.path.mat))
+
+    # Return
+    return(final.i.score.path.mat)
+  } # End of function
+
+  # Output
+  # Compute iscore for each draw
+  final.i.score.path.mat <- BDA.Algo()
+
+  # Max
+  feature.names <- final.i.score.path.mat[
+    1,
+    (which((as.numeric(as.character(unlist(final.i.score.path.mat[2,])))) ==
+             max(as.numeric(as.character(unlist(final.i.score.path.mat[2,])))))):ncol(final.i.score.path.mat)]
+  data_new_update <- data.frame(cbind(
+    data_new$data_new.up_down,
+    data_new[
+      ,
+      colnames(data_new) %in% c(unlist(lapply(
+        plyr::count(feature.names)[1,-ncol(plyr::count(feature.names))],
+        function(x) as.character(x) )))]))
+  # Interaction-based learning tomorrow's stock price probability:
+  interaction.based.probability <- stats::predict(lm(data_new_update$data_new.data_new.up_down~., data=data_new_update), data_new_update[nrow(data_new_update), -1])
+
   ## Buy Signal
   x <- data.frame(xts::as.xts(get(quantmod::getSymbols(symbol))))
   if (test.new.price == 0) {
@@ -215,14 +330,14 @@ yins_predictor <- function(
 
   # Printing results
   return(list(
-    TS.Result = (paste0("Tomorrow this stock goes up with probability: ", round(pred, 2))),
+    TS.Result = paste0("Time-series Learning: Tomorrow this stock goes up with probability: ", round(pred, 2)),
+    inter.based.Learning = paste0("Interaction-based Learning: Tomorrow this stock goes up with probability: ", round(interaction.based.probability, 2)),
     Buy.Sell.Signal.Table = knitr::kable(reduced_table[, -1]),
     Statistics = knitr::kable(final_table_stats),
     Comment = paste0(
         "We recommend buy frequency to be less than ", final_table_stats[1,1],
         " for the first entry. Moreover, the expectation of buy signals is ", final_table_stats[1,2],
         " and the standard deviation is ", final_table_stats[1,3],
-        ", respectively. Hence, we conclude: ", ifelse(reduced_table[nrow(reduced_table), 3] < final_table_stats[1,2], "Do nothing.", "Enter this stock.")),
-    Notes = paste0("PS: We recommend action frequency (ActionFreq) to be less than 5% and do nothing if signal values are less than 1 SD above Mean.")
+        ", respectively. Hence, we conclude: ", ifelse(reduced_table[nrow(reduced_table), 3] < final_table_stats[1,2], "Do nothing.", "Enter this stock."))
   ))
 } # End of function
