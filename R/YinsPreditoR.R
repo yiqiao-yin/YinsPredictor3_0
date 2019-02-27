@@ -134,6 +134,8 @@ yins_predictor <- function(
   train.x.copy <- data_new[,-1]; train.y <- y; K.means.K <- round(sqrt(ncol(data_new[,-1]))); num.initial.set <- 1
   # Algorithm starts from here: we need to repeat 1000 times:
   BDA.Algo <- function() {
+    # Set Seed
+    set.seed(1)
     # Pick Initial Set (state of art) and call it X (capital X):
     initial.set <- data.frame(train.x.copy[,sample(ncol(train.x.copy),size=m,replace=FALSE)])
     # head(initial.set)
