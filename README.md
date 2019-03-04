@@ -172,6 +172,8 @@ N <- nrow(data$Raw.Buy.Sell.Signal.Table)
 dygraph(data$Raw.Buy.Sell.Signal.Table[(N-500):N, c(1,4)]) %>% dyRebase()
 ```
 
+More details can be found [here](https://github.com/yiqiao-yin/YinsPredictor3_0/tree/master/Reinforcement%20Learning).
+
 ## Built With
 
 * [Yiqiao Yin's Research](https://yinscapital.com/research/): We conduct research at Yin's Capital and we develop packages for trading algorithms.
