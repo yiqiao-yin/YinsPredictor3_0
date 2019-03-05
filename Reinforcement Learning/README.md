@@ -83,12 +83,15 @@ knitr::kable(summary(lm(temp$Value~temp$Close,temp))$coefficients)
 ```
 Results of above experiment are presented below. We can observe path for this stock versus trading with this strategy. 
 
+Annotations:
+- **Close**: This is the path for the target stock which we use daily closing price to record. This is served as a benchmark in this experiment.
+- **Value**: This is the path for the values for simulated strategy using reinforced agent that takes advantage of Yin's predictor. 
+
 <p align="center">
   <img src="https://github.com/yiqiao-yin/YinsPredictor3_0/blob/master/Reinforcement%20Learning/RL-Trial-2019-3-4-Screenshot-2.PNG">
 </p>
 
-
-We know that such strategy is creating an alpha because regression model has a constant term that is significant which translates to the graph above as the consistent difference between stock price and simulated strategy monetary value. 
+We know that such strategy is creating an alpha because regression model has a constant term that is significant which translates to the graph above as the consistent difference between stock price and simulated strategy monetary value. This evidence can be seen from the regression results below. We observe the intercept has a statistically significant test statistics. 
 
 <p align="center">
   <img src="https://github.com/yiqiao-yin/YinsPredictor3_0/blob/master/Reinforcement%20Learning/RL-Trial-2019-3-4-Screenshot-1.PNG">
