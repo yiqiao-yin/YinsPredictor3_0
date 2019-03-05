@@ -71,10 +71,17 @@ for (t in 2:N) {
 } # End of agent's actions
 
 # Compute Accumulated Value
-temp$Value <- temp[, 1] * temp$Action
+temp$Value <- temp$Close * temp$Action
 
 # Plot
 library(dygraphs)
 dygraph(temp[(N-300):N, c(1,5)]) %>% dyRebase()
-knitr::kable(summary(lm(temp$Value~temp[,1],temp))$coefficients)
+knitr::kable(summary(lm(temp$Value~temp$Close,temp))$coefficients)
 ```
+Results of above experiment are presented below. We can observe path for this stock versus trading with this strategy. 
+
+[Path for target stock versus RL strategy](https://github.com/yiqiao-yin/YinsPredictor3_0/blob/master/Reinforcement%20Learning/RL-Trial-2019-3-4-Screenshot-1.PNG)
+
+We know that such strategy is creating an alpha because regression model has a constant term that is significant which translates to the graph above as the consistent difference between stock price and simulated strategy monetary value. 
+
+[Regression model results](https://github.com/yiqiao-yin/YinsPredictor3_0/blob/master/Reinforcement%20Learning/RL-Trial-2019-3-4-Screenshot-2.PNG)
