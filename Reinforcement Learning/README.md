@@ -1,6 +1,8 @@
 # Reinforcment Learning
 
-Introduction here.
+Reinforcement learning is an area of Machine Learning. Reinforcement. It is about taking suitable action to maximize reward in a particular situation. It is employed by various software and machines to find the best possible behavior or path it should take in a specific situation.
+
+This section let me introduce my version of trading strategy given a particular stock.
 
 ## Toy Simulation
 
@@ -32,6 +34,7 @@ library(dygraphs)
 N <- nrow(data$Raw.Buy.Sell.Signal.Table)
 dygraph(data$Raw.Buy.Sell.Signal.Table[(N-500):N, c(1,4)]) %>% dyRebase()
 ```
+
 ## Simulation
 
 Given a stock and a certain amount of money, it is recommended to trade this stock in the following manner. In this RL design, we have:
@@ -90,3 +93,12 @@ We know that such strategy is creating an alpha because regression model has a c
 <p align="center">
   <img src="https://github.com/yiqiao-yin/YinsPredictor3_0/blob/master/Reinforcement%20Learning/RL-Trial-2019-3-4-Screenshot-1.PNG">
 </p>
+
+## Soft Threshold
+
+I always cover this part for every algorithm I introduce for the purpose of "stock trading is art than science" philosphy. 
+
+The soft thresholds here is:
+- What stock? Given a stock, I introduce this strategy. However, stock picking skill is also very important. I have another algorithm covering this part. 
+- How much money deserves to be allocated to this stock? This is about the weight of a stock comparing to overall portfolio which is related to modern portfolio theory. However, there is much more advanced version to achieve this goal. 
+- For answers, please click [here](https://yiqiaoyin.files.wordpress.com/2018/12/rubust-portfolio-by-influence-measure-yiqiao-yin-2018.pdf)
