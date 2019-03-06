@@ -97,6 +97,12 @@ We know that such strategy is creating an alpha because regression model has a c
   <img src="https://github.com/yiqiao-yin/YinsPredictor3_0/blob/master/Reinforcement%20Learning/RL-Trial-2019-3-4-Screenshot-1.PNG">
 </p>
 
+I also made a small animation showing time elapsed performance for Yin's Reinforced Strategy versus investing in target stock.
+
+<p align="center">
+  <img src="https://github.com/yiqiao-yin/YinsPredictor3_0/blob/master/Reinforcement%20Learning/2019-3-6-RL.gif">
+</p>
+
 ## Soft Threshold
 
 I always cover this part for every algorithm I introduce for the purpose of "stock trading is art than science" philosphy. 
