@@ -97,7 +97,7 @@ We know that such strategy is creating an alpha because regression model has a c
   <img src="https://github.com/yiqiao-yin/YinsPredictor3_0/blob/master/Reinforcement%20Learning/RL-Trial-2019-3-4-Screenshot-1.PNG">
 </p>
 
-I also made a small animation showing time elapsed performance for Yin's Reinforced Strategy versus investing in target stock.
+I also made a small animation showing time elapsed performance for Yin's Leveraged Reinforced Strategy versus investing in target stock. This algorithm, presented in the following animation, allows traders to flip 5- or even 6-folds under high leverage. This means you can return 500% return under high leverage trading environment (here standard trading leverage is 4x account value for beginners and 8x to 12x account values for senior traders).
 
 <p align="center">
   <img src="https://github.com/yiqiao-yin/YinsPredictor3_0/blob/master/Reinforcement%20Learning/2019-3-6-RL.gif">
