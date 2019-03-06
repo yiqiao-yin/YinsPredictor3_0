@@ -1,5 +1,9 @@
 # Reinforcment Learning
 
+<p align="center">
+  <img src="https://github.com/yiqiao-yin/YinsPredictor3_0/blob/master/Reinforcement%20Learning/2019-3-6-DeepMind.gif">
+</p>
+
 Reinforcement learning is an area of Machine Learning. It is about taking suitable action to maximize reward in a particular situation. It is employed by various software and machines to find the best possible behavior or path it should take in a specific situation.
 
 This section let me introduce my version of trading strategy given a particular stock.
