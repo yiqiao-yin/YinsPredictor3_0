@@ -306,7 +306,7 @@ yins_predictor <- function(
   # Printing results
   return(list(
     interaction.based.Learning = paste0("Interaction-based Learning: Tomorrow this stock goes up with probability: ", round(interaction.based.probability, 2)),
-    Raw.Buy.Sell.Signal.Table = data.frame(reduced_table[, -1],
+    Raw.Buy.Sell.Signal.Table = data.frame(reduced_table[, -1]),
     Buy.Sell.Signal.Table = knitr::kable(reduced_table[, -1]),
     Statistics = knitr::kable(final_table_stats),
     Comment = paste0(
