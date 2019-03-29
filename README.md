@@ -31,7 +31,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Basic working knowledge of using *R* and *RSTudio*.
+Basic working knowledge of using *R* and *RStudio*.
 
 ### Installing
 
