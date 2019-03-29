@@ -6,7 +6,7 @@
 #' @export
 #'
 #' # Define function
-yins_predictor_rnn(
+yins_predictor_rnn <- function(
   symbol = "NFLX",
   cutoff = 0.3
 ) {
