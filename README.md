@@ -102,25 +102,6 @@ $Comment
 
 With default values set to thresholds that are tailored to my experience and personality, one can observe that there are barely any activities happening. This is intuitive in the sense that mispricings do not happen very often. The sudden drop or jump that deserve our attention probably occur very few times a year.
 
-## Example: Use Recurrent Neural Network
-
-<p align="center">
-  <img src="https://github.com/yiqiao-yin/YinsPredictor3_0/blob/master/figs/rnn%2C%20lstm.gif">
-</p>
-
-Recurrent neural networks (RNNs) are a class of artificial neural networks which are often used with sequential data. The 3 most common types of recurrent neural networks are vanilla RNN, long short-term memory (LSTM), proposed by Hochreiter and Schmidhuber in 1997, and
-gated recurrent units (GRU), proposed by [Cho et. al in 2014](https://arxiv.org/abs/1409.1259).
-
-A few good sources to explain RNN are:
-- [RNN, LSTM, GRU](https://towardsdatascience.com/animated-rnn-lstm-and-gru-ef124d06cf45);
-- [Illustrated Guide LSTM](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21).
-
-As an example, we can use RNN as machine learning algorithm to predict the probability a given stock is going up or down the next trading day. Simple code can be found in the following. 
-
-```
-YinsPredictoR::yins_predictor_rnn("NFLX", epochs = 10)
-```
-
 ## Example: Intra-day
 
 Suppose user observes any unlikely pricing activities in the market and it is of his/her interest to discover posterior results based on this new observation. It is recommended to use the following code to update a new price. The algorithm will update itself. 
@@ -157,6 +138,25 @@ $Comment
 ```
 
 In this case, the algorithm will learn about this sudden and perhaps bizarre activity to make a new decision. This function is also designed for intra-day activities. For regular users, simply run the function every morning and it shall be sufficient, because the algorithm downloads live data every time it runs.
+
+## Example: Use Recurrent Neural Network
+
+<p align="center">
+  <img src="https://github.com/yiqiao-yin/YinsPredictor3_0/blob/master/figs/rnn%2C%20lstm.gif">
+</p>
+
+Recurrent neural networks (RNNs) are a class of artificial neural networks which are often used with sequential data. The 3 most common types of recurrent neural networks are vanilla RNN, long short-term memory (LSTM), proposed by Hochreiter and Schmidhuber in 1997, and
+gated recurrent units (GRU), proposed by [Cho et. al in 2014](https://arxiv.org/abs/1409.1259).
+
+A few good sources to explain RNN are:
+- [RNN, LSTM, GRU](https://towardsdatascience.com/animated-rnn-lstm-and-gru-ef124d06cf45);
+- [Illustrated Guide LSTM](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21).
+
+As an example, we can use RNN as machine learning algorithm to predict the probability a given stock is going up or down the next trading day. Simple code can be found in the following. 
+
+```
+YinsPredictoR::yins_predictor_rnn("NFLX", epochs = 10)
+```
 
 ## Reinforcement Learning
 
