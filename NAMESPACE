@@ -1,2 +1,3 @@
 # Function
 export(yins_predictor)
+export(yins_predictor_rnn)
