@@ -1,6 +1,6 @@
 Package: YinsPredictoR
 Type: Package
-Title: Stock Behavior Given a Ticker
+Title: Stock Behavior and Trading Decision Given a Ticker
 Version: 0.3.0
 Author: Yiqiao Yin
 Maintainer: Yiqiao Yin <eagle0504@gmail.com>
