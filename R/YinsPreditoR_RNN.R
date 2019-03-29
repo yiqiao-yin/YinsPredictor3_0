@@ -8,7 +8,8 @@
 #' # Define function
 yins_predictor_rnn <- function(
   symbol = "NFLX",
-  cutoff = 0.3
+  cutoff = 0.3,
+  epochs = 5
 ) {
   
   # Library
@@ -52,7 +53,7 @@ yins_predictor_rnn <- function(
   batch_size <- 32
   plyr::count(all[,1])
   num_classes <- nrow(plyr::count(all[,1])); num_classes
-  epochs <- 30
+  #epochs <- 30
   
   # Embedding dimensions.
   row_hidden <- 128
@@ -138,4 +139,4 @@ yins_predictor_rnn <- function(
                "The next trading day we expect ",
                symbol, " to go up with probability ", 
                round(tail(predictions)[6,2], 3), "."))
-}
+} # End of function
