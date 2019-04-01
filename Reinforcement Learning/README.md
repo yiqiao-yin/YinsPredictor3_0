@@ -43,7 +43,7 @@ dygraph(data$Raw.Buy.Sell.Signal.Table[(N-500):N, c(1,4)]) %>% dyRebase()
 
 Given a stock and a certain amount of money, it is recommended to trade this stock in the following manner. In this RL design, we have:
 - an agent: a stock trader;
-- a serious of actions: buy, sell, do nothing;
+- a series of actions: buy, sell, do nothing;
 - reward/penalty: profit and/or loss (which is monitored by thye monetary value, i.e. the worth according to current stock price).
 
 With the definition described above, we execute the following protocols:
