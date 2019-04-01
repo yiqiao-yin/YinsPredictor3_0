@@ -201,10 +201,11 @@ yins_predictor <- function(
   if (ncol(data_new_update) == 2) {
     interaction.based.probability <- 0.5
   } else {
-      interaction.based.probability <- stats::predict(lm(data_new_update$data_new.data_new.up_down~., data=data_new_update), data_new_update[nrow(data_new_update), -1])
-  }; all.pred <- stats::predict(lm(data_new_update$data_new.data_new.up_down~., data=data_new_update), data_new_update[, ])
-  interaction.based.probability.scaled <- (interaction.based.probability-min(all.pred))/abs(max(all.pred)-min(all.pred))
-  interaction.based.probability <- interaction.based.probability.scaled
+    interaction.based.probability <- stats::predict(lm(data_new_update$data_new.data_new.up_down~., data=data_new_update), data_new_update[nrow(data_new_update), -1])
+    all.pred <- stats::predict(lm(data_new_update$data_new.data_new.up_down~., data=data_new_update), data_new_update[, ])
+    interaction.based.probability.scaled <- (interaction.based.probability-min(all.pred))/abs(max(all.pred)-min(all.pred))
+    interaction.based.probability <- interaction.based.probability.scaled
+  }
 
   ## Buy Signal
   x <- data.frame(xts::as.xts(get(quantmod::getSymbols(symbol))))
