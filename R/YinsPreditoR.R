@@ -196,8 +196,13 @@ yins_predictor <- function(
       colnames(data_new) %in% c(unlist(lapply(
         plyr::count(feature.names)[1,-ncol(plyr::count(feature.names))],
         function(x) as.character(x) )))]))
+
   # Interaction-based learning tomorrow's stock price probability:
-  interaction.based.probability <- stats::predict(lm(data_new_update$data_new.data_new.up_down~., data=data_new_update), data_new_update[nrow(data_new_update), -1])
+  if (ncol(data_new_update) == 2) {
+    interaction.based.probability <- 0.5
+  } else {
+      interaction.based.probability <- stats::predict(lm(data_new_update$data_new.data_new.up_down~., data=data_new_update), data_new_update[nrow(data_new_update), -1])
+  }
 
   ## Buy Signal
   x <- data.frame(xts::as.xts(get(quantmod::getSymbols(symbol))))
