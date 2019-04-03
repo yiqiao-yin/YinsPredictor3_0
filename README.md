@@ -72,6 +72,7 @@ An example usage of this package can refer to the following. Suppose user just w
 ```
 # For example
 Sys.time(); YinsPredictoR::yins_predictor('NFLX')
+# Begin <- Sys.time(); YinsPredictoR::yins_predictor('NFLX'); End <- Sys.time(); End - Begin
 
 # Output
 [1] "2019-02-27 03:50:43 EST"
